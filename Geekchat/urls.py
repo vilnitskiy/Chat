@@ -16,6 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from chat import views
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^$', views.home, name='home'),
+    #url(r'^new/', views.new_room, name='new_room'),
+    url(r'^(?P<label>[\w-]{,50})/$', views.room, name='room'),
+    url(r'^admin/', admin.site.urls)
 ]
