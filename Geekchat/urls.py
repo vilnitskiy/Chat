@@ -20,7 +20,7 @@ from chat import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-    #url(r'^new/', views.new_room, name='new_room'),
+    url(r'^new/', views.new_room, name='new_room'),
     url(r'^(?P<label>[\w-]{,50})/$', views.room, name='room'),
     url(r'^admin/', admin.site.urls)
 ]
