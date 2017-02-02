@@ -5,7 +5,7 @@ $(function() {
 
     chatsock.onmessage = function(message) {
         var data = JSON.parse(message.data);
-        $('#chat').append('<tr>' +
+        $('#chat').append('<hr><tr>' +
             '<td>' + data.timestamp + '</td>' +
             '<td>' + data.handle + '</td>' +
             '<td>' + data.message + ' </td>' +

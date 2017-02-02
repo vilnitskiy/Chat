@@ -1,35 +1,53 @@
-{% load staticfiles %}
+{% load staticfiles %} {% load static %}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-<h1>{{ room.label }}</h1>
-<p class="quiet">
-    Anyone with this URL can join the room and chat:
-    <code>{{ request.scheme }}://{{ request.get_host }}/{{ room.label }}</code>
-</p>
-<p>
-    <label for="handle">Your name:</label>
-    <input id="handle" type="text" placeholder="handle">
-</p>
-<form id="chatform">
-    <table id="chat">
-        <tbody>
-            {% for message in messages %}
-            <tr>
-                <td>{{ message.formatted_timestamp }}</td>
-                <td>{{ message.handle }}</td>
-                <td>{{ message.message }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>Say something:</td>
-                <td colspan=2>
-                    <input id="message" type="text" placeholder="message">
-                    <button type="submit" id="go">Say it</button>
-                </td>
-        </tfoot>
-    </table>
-</form>
-<script type="text/javascript" src='{% static "js/jquery-1.12.1.min.js" %}'></script>
-<script type="text/javascript" src='{% static "js/reconnecting-websocket.min.js" %}'></script>
-<script type="text/javascript" src='{% static "js/chat.js" %}'></script>
+<body>
+    <div class="chat-content">
+        <h1>{{ room.label }}</h1>
+        <p class="quiet">
+            Кто-угодно может зайти в чат по этому адресу:
+            <code>{{ request.scheme }}://{{ request.get_host }}/{{ room.label }}</code>
+        </p>
+        <p>
+            <label for="handle">Ваше имя:</label>
+            <input id="handle" class="form-control" type="text" placeholder="handle">
+        </p>
+        <form id="chatform">
+            <table id="chat">
+                <tbody>
+                    {% for message in messages %}
+                    <div style="margin-top: 15px;">
+                    <tr>
+                        <td>{{ message.formatted_timestamp }}</td>
+                        <td>{{ message.handle }}</td>
+                        <td>{{ message.message }}</td>
+                    </tr>
+                  </div>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <div class="form-group comment" >
+                                Напишите что-нибудь:
+                                <textarea class="form-control" id="message"></textarea>
+                            </div>
+                            <button type="submit" class='btn btn-primary' id="go">Отправить</button>
+                        </td>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+
+    <script type="text/javascript" src='{% static "js/jquery-1.12.1.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/reconnecting-websocket.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/chat.js" %}'></script>
+</body>
+
+<style>
+    body {
+        background-image: url("{% static 'img/background2.png' %}");
+    }
+</style>
