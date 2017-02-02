@@ -6,8 +6,8 @@ $(function() {
     chatsock.onmessage = function(message) {
         var data = JSON.parse(message.data);
         $('#chat').append(
-            '<div class="col-md-4">' + data.handle + '</div>' +
-            '<div class="col-md-8">' + data.message + ' </div>');
+            '<div class="col s4">' + data.handle + '</div>' +
+            '<div class="col s8">' + data.message + ' </div>');
     };
 
     $("#chatform").on("submit", function(event) {

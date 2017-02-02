@@ -1,6 +1,11 @@
 {% load staticfiles %} {% load static %}
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
 <body>
@@ -13,20 +18,19 @@
         </p>
         <hr>
         <p>
-            <label for="handle">Ваше имя:</label>
             <input id="handle" class="form-control lg" type="text" placeholder="Имя">
         </p>
+        <br>
         <form id="chatform">
-            <div class="row pre-scrollable col-md-7" id="chat">
+            <div class="row chat">
+                <div class="pre-scrollable col s7" id="chat">
                     {% for message in messages %}
-                    <div class="col-md-4">{{ message.handle }}</div>
-                    <div class="col-md-8">{{ message.message }}</div>
+                      <div class="col s4">{{ message.handle }}</div>
+                      <div class="col s8">{{ message.message }}</div>
                     {% endfor %}
-            </div>
-            <div class="row">
-                <div class="form-group col-md-7 comment">
-                    <label for="message">Сообщение:</label>
-                    <textarea class="form-control" id="message"></textarea>
+                </div>
+                <div class="input-field col s7">
+                    <textarea id="message" placeholder="Cообщение" class="materialize-textarea"></textarea>
                     <button type="submit" class='btn btn-primary' id="go">Отправить</button>
                 </div>
             </div>
