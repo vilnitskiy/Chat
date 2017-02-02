@@ -131,3 +131,5 @@ CHANNEL_LAYERS = {
         "ROUTING": "Geekchat.routing.channel_routing",
     },
 }
+
+ALLOWED_HOSTS = ['stark-everglades-18786.herokuapp.com']
