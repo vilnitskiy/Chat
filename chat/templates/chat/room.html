@@ -6,38 +6,30 @@
 <body>
     <div class="chat-content">
         <h1>{{ room.label }}</h1>
+        <hr>
         <p class="quiet">
             Кто-угодно может зайти в чат по этому адресу:
             <code>{{ request.scheme }}://{{ request.get_host }}/{{ room.label }}</code>
         </p>
+        <hr>
         <p>
             <label for="handle">Ваше имя:</label>
-            <input id="handle" class="form-control" type="text" placeholder="handle">
+            <input id="handle" class="form-control lg" type="text" placeholder="Имя">
         </p>
         <form id="chatform">
-            <table id="chat">
-                <tbody>
+            <div class="row pre-scrollable col-md-7" id="chat">
                     {% for message in messages %}
-                    <div style="margin-top: 15px;">
-                    <tr>
-                        <td>{{ message.formatted_timestamp }}</td>
-                        <td>{{ message.handle }}</td>
-                        <td>{{ message.message }}</td>
-                    </tr>
-                  </div>
+                    <div class="col-md-4">{{ message.handle }}</div>
+                    <div class="col-md-8">{{ message.message }}</div>
                     {% endfor %}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td>
-                            <div class="form-group comment" >
-                                Напишите что-нибудь:
-                                <textarea class="form-control" id="message"></textarea>
-                            </div>
-                            <button type="submit" class='btn btn-primary' id="go">Отправить</button>
-                        </td>
-                </tfoot>
-            </table>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-7 comment">
+                    <label for="message">Сообщение:</label>
+                    <textarea class="form-control" id="message"></textarea>
+                    <button type="submit" class='btn btn-primary' id="go">Отправить</button>
+                </div>
+            </div>
         </form>
     </div>
 
