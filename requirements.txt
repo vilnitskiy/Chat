@@ -3,3 +3,4 @@ channels==0.17.3
 daphne==0.15.0
 asgi_redis
 haikunator
+dj-database-url==0.4.0
