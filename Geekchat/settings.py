@@ -130,4 +130,4 @@ CHANNEL_LAYERS = {
     },
 }
 
-ALLOWED_HOSTS = ['stark-everglades-18786.herokuapp.com']
+ALLOWED_HOSTS = ['ilnitskiy.herokuapp.com']
