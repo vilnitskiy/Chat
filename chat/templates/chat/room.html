@@ -23,13 +23,13 @@
         <br>
         <form id="chatform">
             <div class="row chat">
-                <div class="pre-scrollable col s7" id="chat">
+                <div class="pre-scrollable col s8" id="chat">
                     {% for message in messages %}
                       <div class="col s4">{{ message.handle }}</div>
                       <div class="col s8">{{ message.message }}</div>
                     {% endfor %}
                 </div>
-                <div class="input-field col s7">
+                <div class="input-field col s8">
                     <textarea id="message" placeholder="Cообщение" class="materialize-textarea"></textarea>
                     <button type="submit" class='btn btn-primary' id="go">Отправить</button>
                 </div>

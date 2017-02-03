@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 from chat import views
@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^new/', views.new_room, name='new_room'),
     url(r'^(?P<label>[\w-]{,50})/$', views.room, name='room'),
+    url(r'^auth/logout/$', views.auth_logout, name='auth_logout'),
+    url('', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls)
 ]

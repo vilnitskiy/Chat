@@ -1,11 +1,31 @@
 {% load staticfiles %}
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<!-- font awesome css -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="{% static "css/main.css" %}">
 
 <body>
-    <div id="container">
+    <div id="container-top">
         <a class="button" id="new" href="{% url 'new_room' %}">Создать новую комнату</a>
+        <br>
+        <div class='hello'>
+          {% if user.is_authenticated %} Добро пожаловать, {{ username }}! {% endif %}
+        </div>
+    </div>
+    <div id="container-bottom">
+        {% if user.is_authenticated %}
+          <a class="logout" href="{% url 'auth_logout' %}">logout</a>
+        {% else %}
+            <div class="btn-group facebook-auth-btn">
+              <a class='btn btn-primary disabled'>
+                <i class="fa fa-facebook" style="width:16px; height:20px"></i>
+              </a>
+              <a class='btn btn-primary' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" style="width:12em">
+                Sign in with Facebook
+              </a>
+            </div>
+        {% endif %}
     </div>
 </body>
 
