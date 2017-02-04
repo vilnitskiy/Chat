@@ -1,5 +1,6 @@
 $(function() {
     // WebSockets settings
+    $('#handle').val(username);
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
     var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + "/chat" + window.location.pathname);
 

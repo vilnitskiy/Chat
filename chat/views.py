@@ -19,6 +19,7 @@ def home(request):
         user = request.user
         social = user.social_auth.get(provider='facebook')
         user.username = social.extra_data['username']
+        user.save()
         return render(request, "chat/home.html", {'username': user.username})
     return render(request, "chat/home.html", {})
 
@@ -38,7 +39,12 @@ def new_room(request):
 def room(request, label):
     room, created = Room.objects.get_or_create(label=label)
     messages = reversed(room.messages.order_by('-timestamp')[:50])
+    if request.user.is_authenticated:
+        username = request.user.username
+    else:
+        username = ''
     context = {
+        'username': username,
         'room': room,
         'messages': messages
     }
