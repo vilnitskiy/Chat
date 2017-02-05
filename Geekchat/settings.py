@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from django.conf import global_settings
 
-from .env_settings import SECRET_KEY, SOCIAL_AUTH_FACEBOOK_KEY, SOCIAL_AUTH_FACEBOOK_SECRET
+try:
+    from .env_settings import SECRET_KEY, SOCIAL_AUTH_FACEBOOK_KEY, SOCIAL_AUTH_FACEBOOK_SECRET
+except ImportError:
+    pass
+
 import os
 import dj_database_url
 
@@ -145,4 +149,7 @@ SOCIAL_AUTH_CREATE_USERS = True
 
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('username', 'username')]
 
-from settings_local import *
+try:
+    from settings_local import *
+except ImportError:
+    pass
