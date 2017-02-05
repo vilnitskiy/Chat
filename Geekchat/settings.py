@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from django.conf import global_settings
 
+SECRET_KEY = 'some_key_for_local_development'
+
 try:
     from .env_settings import SECRET_KEY, SOCIAL_AUTH_FACEBOOK_KEY, SOCIAL_AUTH_FACEBOOK_SECRET
 except ImportError:
