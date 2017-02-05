@@ -18,6 +18,9 @@ $(function() {
         }
         chatsock.send(JSON.stringify(message));
         $("#message").val('').focus();
+        if ($('#handle').val() != '') {
+            $('#handle').attr('disabled', 'disabled');
+        }
         return false;
     });
 });

@@ -144,3 +144,5 @@ SOCIAL_AUTH_DEFAULT_USERNAME = 'Hovard Roark'
 SOCIAL_AUTH_CREATE_USERS = True
 
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('username', 'username')]
+
+from settings_local import *
